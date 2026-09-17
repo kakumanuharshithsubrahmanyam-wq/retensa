@@ -50,3 +50,7 @@ models/*
 # Logs and local outputs
 *.log
 logs/
+
+# Generated reports (keep the folder)
+reports/*
+!reports/.gitkeep

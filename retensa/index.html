@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RETENSA — AI Customer Retention Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="app-shell" id="appShell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">R</div>
+      <div class="brand-text">
+        <div class="brand-name">RETENSA</div>
+        <div class="brand-sub">AI Retention Intelligence</div>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+    </div>
+
+    <nav class="nav-group">
+      <div class="nav-label">Workspace</div>
+      <ul class="nav-list" id="navList">
+        <li><a href="#overview" class="nav-item" data-page="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Overview</span></a></li>
+        <li><a href="#customers" class="nav-item" data-page="customers">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span>Customers</span></a></li>
+        <li><a href="#risk-intelligence" class="nav-item" data-page="risk-intelligence">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg>
+          <span>Risk Intelligence</span></a></li>
+        <li><a href="#customer-intelligence" class="nav-item" data-page="customer-intelligence">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+          <span>Explainable AI</span></a></li>
+        <li><a href="#action-center" class="nav-item" data-page="action-center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          <span>Retention Center</span></a></li>
+        <li><a href="#simulator" class="nav-item" data-page="simulator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21v-7M4 10V3M12 21v-11M12 6V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg>
+          <span>What-If Simulator</span></a></li>
+        <li><a href="#ai-assistant" class="nav-item" data-page="ai-assistant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>AI Assistant</span></a></li>
+        <li><a href="#reports" class="nav-item" data-page="reports">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          <span>Reports</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item" id="settingsLink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <span>Settings</span></a>
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span>System operational</span>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <!-- ============ MAIN ============ -->
+  <div class="app-main">
+    <header class="topbar">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="globalSearch" placeholder="Search customers, risks, actions..." aria-label="Global search" />
+      </div>
+      <div class="topbar-right">
+        <div class="engine-status">
+          <span class="status-dot"></span>
+          <span>AI Engine Online</span>
+        </div>
+        <button class="icon-btn" aria-label="Notifications" id="notifBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span class="notif-dot"></span>
+        </button>
+        <div class="profile-chip">
+          <div class="profile-avatar">AN</div>
+          <span class="profile-name">Alex Novak</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="pageOutlet">
+
+      <!-- ============ PAGE: OVERVIEW ============ -->
+      <section class="page" id="page-overview">
+        <div class="page-head">
+          <div>
+            <h1>Retention Command Center</h1>
+            <p>Identify customers at risk. Understand why. Take action before they leave.</p>
+          </div>
+          <button class="btn btn-primary" data-nav="customers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            View all customers
+          </button>
+        </div>
+
+        <div class="kpi-grid" id="kpiGrid"></div>
+
+        <div class="grid-2" style="margin-bottom:14px;">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Customer Risk Distribution</div>
+                <div class="card-sub">Share of customers by predicted risk band</div>
+              </div>
+            </div>
+            <canvas id="riskDonutChart" height="200"></canvas>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Risk Summary</div>
+            </div>
+            <div class="risk-summary-list" id="riskSummaryList"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:14px;">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Churn Risk Trend</div>
+              <div class="card-sub">Predicted customer risk over the last 30 days</div>
+            </div>
+            <div class="chip-toggle" id="trendToggle" data-target="overviewTrendChart">
+              <button data-range="7D">7D</button>
+              <button data-range="30D" class="active">30D</button>
+              <button data-range="90D">90D</button>
+            </div>
+          </div>
+          <canvas id="overviewTrendChart" height="90"></canvas>
+        </div>
+
+        <div class="grid-2" style="margin-bottom:14px;">
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Top Churn Drivers</div>
+            </div>
+            <div class="driver-list" id="driverList"></div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Retention Opportunities</div>
+              <div class="card-sub">Highest-scoring accounts to act on this week</div>
+            </div>
+            <div class="risk-summary-list" id="opportunityMini"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">High Priority Customers</div>
+              <div class="card-sub">Ranked by predicted churn probability</div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr>
+                <th>Customer</th><th>Churn Probability</th><th>Risk</th><th>Primary Cause</th><th>Customer Value</th><th>Retention Opportunity</th><th>Action</th>
+              </tr></thead>
+              <tbody id="priorityTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: CUSTOMERS (Risk Explorer) ============ -->
+      <section class="page" id="page-customers" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Customer Risk Explorer</h1>
+            <p>Find the customers who need attention before they leave.</p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-field" style="flex:0 0 240px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="explorerSearch" placeholder="Search customer ID..." />
+          </div>
+          <select class="filter-select" id="riskFilter">
+            <option value="">All risk levels</option>
+            <option value="CRITICAL">Critical</option>
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+          </select>
+          <select class="filter-select" id="valueFilter">
+            <option value="">All customer values</option>
+            <option value="HIGH">High value</option>
+            <option value="MEDIUM">Medium value</option>
+            <option value="LOW">Low value</option>
+          </select>
+          <select class="filter-select" id="probFilter">
+            <option value="">Any probability</option>
+            <option value="80">80%+</option>
+            <option value="60">60%+</option>
+            <option value="35">35%+</option>
+          </select>
+          <select class="filter-select" id="sortFilter">
+            <option value="prob-desc">Sort: Probability (high → low)</option>
+            <option value="prob-asc">Sort: Probability (low → high)</option>
+            <option value="opp-desc">Sort: Opportunity score</option>
+            <option value="tenure-asc">Sort: Tenure (shortest)</option>
+          </select>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr>
+                <th>Customer</th><th>Probability</th><th>Risk</th><th>Tenure</th><th>Monthly Charges</th><th>Contract</th><th>Primary Cause</th><th>Opportunity</th><th>Action</th>
+              </tr></thead>
+              <tbody id="explorerTableBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="explorerPagination"></div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: RISK INTELLIGENCE ============ -->
+      <section class="page" id="page-risk-intelligence" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Risk Intelligence</h1>
+            <p>Portfolio-level view of where churn risk concentrates and why.</p>
+          </div>
+          <div class="chip-toggle" id="riskIntelToggle">
+            <button data-range="7D">7D</button>
+            <button data-range="30D" class="active">30D</button>
+            <button data-range="90D">90D</button>
+          </div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Risk Distribution</div>
+            <canvas id="ri_riskDist"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Churn Probability Distribution</div>
+            <canvas id="ri_probDist"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Top Churn Drivers</div>
+            <canvas id="ri_drivers"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Risk by Contract</div>
+            <canvas id="ri_contract"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Risk by Tenure</div>
+            <canvas id="ri_tenure"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Risk by Customer Value</div>
+            <canvas id="ri_value"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-title" style="margin-bottom:10px;">Risk by Monthly Charges</div>
+            <canvas id="ri_charges"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: CUSTOMER INTELLIGENCE ============ -->
+      <section class="page" id="page-customer-intelligence" hidden>
+        <a href="#customers" class="back-link" data-nav="customers">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          Back to customers
+        </a>
+        <div class="ci-header">
+          <h1 id="ciCustomerId">Customer</h1>
+          <span class="badge" id="ciRiskBadge">RISK</span>
+        </div>
+
+        <div class="ci-top-grid">
+          <div class="card prob-ring-card">
+            <div class="prob-ring">
+              <svg width="168" height="168" viewBox="0 0 168 168">
+                <circle cx="84" cy="84" r="72" fill="none" stroke="var(--surface-2)" stroke-width="14"/>
+                <circle id="ciRingFill" cx="84" cy="84" r="72" fill="none" stroke="var(--critical)" stroke-width="14" stroke-linecap="round" stroke-dasharray="452" stroke-dashoffset="452"/>
+              </svg>
+              <div class="prob-ring-value">
+                <span class="num" id="ciProbNum">0%</span>
+                <span class="lbl">CHURN RISK</span>
+              </div>
+            </div>
+            <div class="prob-caption">Predicted Churn Probability</div>
+            <div class="confidence-row">Model confidence: <b id="ciConfidence">—</b></div>
+          </div>
+
+          <div class="profile-cards" id="ciProfileCards"></div>
+        </div>
+
+        <div class="section-block">
+          <div class="card">
+            <span class="xai-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.4 7.2H22l-6 4.6 2.4 7.2-6.4-4.6-6.4 4.6 2.4-7.2-6-4.6h7.6z"/></svg>
+              Explainable model output
+            </span>
+            <h2 class="section-heading">Why is this customer likely to churn?</h2>
+            <p class="section-desc">Explainable model output based on individual feature contributions to the predicted risk score.</p>
+            <div class="contrib-grid">
+              <div>
+                <div class="contrib-col-label">Risk-increasing factors</div>
+                <div id="ciPositiveContrib"></div>
+              </div>
+              <div>
+                <div class="contrib-col-label">Risk-reducing factors</div>
+                <div id="ciNegativeContrib"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="card explain-card">
+            <div class="card-title" style="margin-bottom:10px;">AI Explanation</div>
+            <p id="ciExplanationText"></p>
+            <div class="explain-footer">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Model factors → human-readable explanation
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="card">
+            <div class="card-title" style="margin-bottom:4px;">Root Cause Analysis</div>
+            <p class="card-sub" style="margin-bottom:6px;">How individual factors compound into overall churn risk</p>
+            <div class="rootcause-diagram" id="rootCauseDiagram">
+              <div class="rc-node">CUSTOMER AT RISK</div>
+              <div class="rc-connector"></div>
+              <div class="rc-node" id="rcMid">PRICE SENSITIVITY</div>
+              <div class="rc-connector"></div>
+              <div class="rc-pair">
+                <div class="rc-node" id="rcFactorA">High Monthly Charges</div>
+                <span class="rc-plus">+</span>
+                <div class="rc-node" id="rcFactorB">Month-to-Month Contract</div>
+              </div>
+              <div class="rc-connector"></div>
+              <div class="rc-node rc-final">HIGH CHURN RISK</div>
+            </div>
+            <div class="rc-secondary" id="rcSecondary">Secondary cause: Support Friction</div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="card">
+            <div class="card-title" style="margin-bottom:14px;">Recommended Retention Strategy</div>
+            <div class="strategy-grid">
+              <div class="strategy-mini"><div class="lbl">Priority</div><div class="val" id="stratPriority">HIGH</div></div>
+              <div class="strategy-mini"><div class="lbl">Primary Intervention</div><div class="val" id="stratPrimary">Annual Plan Incentive</div></div>
+              <div class="strategy-mini"><div class="lbl">Secondary Intervention</div><div class="val" id="stratSecondary">Priority Support</div></div>
+              <div class="strategy-mini"><div class="lbl">Timing</div><div class="val" id="stratTiming">Within 7 Days</div></div>
+            </div>
+            <button class="btn btn-primary" id="generatePlanBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.4 7.2-6.4-4.6-6.4 4.6 2.4-7.2-6-4.6h7.6z"/></svg>
+              Generate AI action plan
+            </button>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">AI Retention Campaign Generator</div>
+                <div class="card-sub">Generate outreach content for this customer</div>
+              </div>
+              <button class="btn btn-primary btn-sm" id="generateCampaignBtn">Generate campaign</button>
+            </div>
+            <div id="campaignArea"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: WHAT-IF SIMULATOR ============ -->
+      <section class="page" id="page-simulator" hidden>
+        <div class="page-head">
+          <div>
+            <h1>What-If Churn Simulator</h1>
+            <p>Explore how changes to the customer profile affect predicted risk.</p>
+          </div>
+          <select class="filter-select" id="simCustomerSelect"></select>
+        </div>
+
+        <div class="sim-grid">
+          <div class="card">
+            <div class="card-title" style="margin-bottom:16px;">Customer profile controls</div>
+
+            <div class="control-group">
+              <label>Contract type <span class="control-val" id="simContractLabel">Month-to-month</span></label>
+              <div class="toggle-row" id="simContractToggle">
+                <button class="toggle-pill active" data-value="Month-to-month">Month-to-month</button>
+                <button class="toggle-pill" data-value="One year">One year</button>
+                <button class="toggle-pill" data-value="Two year">Two year</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label>Monthly charges <span class="control-val" id="simChargesLabel">$89</span></label>
+              <input type="range" id="simCharges" min="19" max="150" value="89" />
+            </div>
+
+            <div class="control-group">
+              <label>Tenure (months) <span class="control-val" id="simTenureLabel">5</span></label>
+              <input type="range" id="simTenure" min="1" max="60" value="5" />
+            </div>
+
+            <div class="control-group">
+              <label>Support level <span class="control-val" id="simSupportLabel">Standard</span></label>
+              <div class="toggle-row" id="simSupportToggle">
+                <button class="toggle-pill" data-value="Basic">Basic</button>
+                <button class="toggle-pill active" data-value="Standard">Standard</button>
+                <button class="toggle-pill" data-value="Priority">Priority</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label>Engagement level <span class="control-val" id="simEngagementLabel">Low</span></label>
+              <div class="toggle-row" id="simEngagementToggle">
+                <button class="toggle-pill active" data-value="Low">Low</button>
+                <button class="toggle-pill" data-value="Medium">Medium</button>
+                <button class="toggle-pill" data-value="High">High</button>
+              </div>
+            </div>
+
+            <div class="flex gap-8">
+              <button class="btn btn-primary" id="simulateBtn">Simulate</button>
+              <button class="btn" id="resetSimBtn">Reset</button>
+            </div>
+          </div>
+
+          <div class="card compare-panel">
+            <div class="card-title">Risk comparison</div>
+            <div class="compare-rings">
+              <div class="compare-ring-block">
+                <span class="cap">Current profile</span>
+                <div class="prob-ring" style="width:120px;height:120px;">
+                  <svg width="120" height="120" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface-2)" stroke-width="10"/>
+                    <circle id="simCurrentRing" cx="60" cy="60" r="50" fill="none" stroke="var(--critical)" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" style="transform:rotate(-90deg);transform-origin:center;"/>
+                  </svg>
+                  <div class="prob-ring-value"><span class="num" id="simCurrentNum" style="font-size:20px;">89%</span></div>
+                </div>
+              </div>
+              <div class="compare-arrow">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+              <div class="compare-ring-block">
+                <span class="cap">Simulated profile</span>
+                <div class="prob-ring" style="width:120px;height:120px;">
+                  <svg width="120" height="120" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface-2)" stroke-width="10"/>
+                    <circle id="simSimulatedRing" cx="60" cy="60" r="50" fill="none" stroke="var(--low)" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" style="transform:rotate(-90deg);transform-origin:center;"/>
+                  </svg>
+                  <div class="prob-ring-value"><span class="num" id="simSimulatedNum" style="font-size:20px;">64%</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="risk-change-banner" id="simRiskChangeBanner">Risk change: −25 percentage points</div>
+
+            <div class="insight-box" id="simInsightBox">
+              <b>Intervention insight —</b> Adjust the controls and press Simulate to see how the model's simulated prediction responds.
+            </div>
+            <div class="explain-footer">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              This is a simulated model prediction, not a guarantee of outcome or proof of causal effect.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: RETENTION ACTION CENTER ============ -->
+      <section class="page" id="page-action-center" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Retention Action Center</h1>
+            <p>Turn predictions into prioritized customer actions.</p>
+          </div>
+        </div>
+
+        <div class="summary-cards">
+          <div class="card summary-card"><div class="num" id="acCritical">317</div><div class="lbl">Critical customers</div></div>
+          <div class="card summary-card"><div class="num" id="acContacted">124</div><div class="lbl">Contacted</div></div>
+          <div class="card summary-card"><div class="num" id="acActive">78</div><div class="lbl">Active interventions</div></div>
+          <div class="card summary-card"><div class="num" id="acResolved">42</div><div class="lbl">Resolved</div></div>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr>
+                <th>Customer</th><th>Risk</th><th>Root Cause</th><th>Recommended Action</th><th>Priority</th><th>Status</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="actionTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: AI ASSISTANT ============ -->
+      <section class="page" id="page-ai-assistant" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Retensa AI</h1>
+            <p>Ask questions about your customer retention data.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="prompt-chips" id="promptChips">
+            <button class="prompt-chip" data-prompt="Which customers should we save today?">Which customers should we save today?</button>
+            <button class="prompt-chip" data-prompt="Why is C1024 at risk?">Why is C1024 at risk?</button>
+            <button class="prompt-chip" data-prompt="What are the biggest churn drivers?">What are the biggest churn drivers?</button>
+            <button class="prompt-chip" data-prompt="Show me high-value customers at risk.">Show me high-value customers at risk.</button>
+            <button class="prompt-chip" data-prompt="Which intervention should we prioritize?">Which intervention should we prioritize?</button>
+          </div>
+          <div class="chat-shell">
+            <div class="chat-scroll" id="chatScroll"></div>
+            <div class="chat-input-row">
+              <input type="text" id="chatInput" placeholder="Ask about a customer, driver, or recommendation..." aria-label="Ask Retensa AI" />
+              <button class="btn btn-primary" id="chatSendBtn">Send</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: REPORTS ============ -->
+      <section class="page" id="page-reports" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Retention Intelligence Report</h1>
+            <p>A consolidated snapshot ready to export or present.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <ul class="report-list">
+            <li class="report-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              Customer overview — 7,043 customers analyzed
+            </li>
+            <li class="report-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              Risk distribution — Critical, High, Medium, Low breakdown
+            </li>
+            <li class="report-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg>
+              Top churn drivers — contract, pricing, tenure, support
+            </li>
+            <li class="report-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              High-risk customers — ranked and prioritized
+            </li>
+            <li class="report-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.4 7.2-6.4-4.6-6.4 4.6 2.4-7.2-6-4.6h7.6z"/></svg>
+              Retention opportunities and recommended actions
+            </li>
+          </ul>
+          <button class="btn btn-primary" id="generateReportBtn">Generate report</button>
+          <div class="report-ready hidden-el" id="reportReadyBanner">
+            <span class="txt">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Report ready
+            </span>
+            <button class="btn btn-sm" id="viewReportBtn">View report</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="planModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>AI Retention Action Plan</h3>
+      <button class="modal-close" id="closeModalBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
