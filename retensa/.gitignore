@@ -42,14 +42,24 @@ htmlcov/
 # ML artifacts and local data (keep folder placeholders)
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/Telco_Customer_Churn_Cleaned.csv
 data/processed/*
 !data/processed/.gitkeep
+# Model artifacts — keep production baseline deployable; ignore large/local-only files
 models/*
 !models/.gitkeep
+!models/churn_model.joblib
+!models/churn_model_baseline.joblib
+!models/baseline_metrics.json
+!models/model_metadata.json
 
 # Logs and local outputs
 *.log
 logs/
+
+# Frontend dependencies / build
+frontend/node_modules/
+frontend/dist/
 
 # Generated reports (keep the folder)
 reports/*

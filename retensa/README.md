@@ -184,3 +184,93 @@ Combines prediction, explanation, root cause, What-If, recommendation, and an AI
 PYTHONPATH=. python -m src.recommendations.test_recommendations
 PYTHONPATH=. python -m src.recommendations.test_action_center
 ```
+
+## Phase 5 — React + FastAPI
+
+Architecture:
+
+```
+React (Vite)
+    ↓ HTTP/JSON
+FastAPI
+    ↓
+Existing RETENSA intelligence (XGBoost · SHAP · Root Cause · What-If · Recommendations · optional LLM)
+```
+
+The teammate vanilla UI (`index.html`, `css/`, `js/`) is kept as a legacy design reference. The live app lives in `frontend/` and talks only to FastAPI — no ML logic and no fake production probabilities in the browser.
+
+### Run the backend
+
+```bash
+PYTHONPATH=. uvicorn api.main:app --reload --port 8000
+```
+
+- Backend: http://localhost:8000
+- Health: http://localhost:8000/api/health
+
+### Run the frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+- Frontend: http://localhost:5173
+
+### Key API routes
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/api/health` | Service / model status |
+| GET | `/api/schema` | Categorical vocab for What-If controls |
+| GET | `/api/dashboard` | Portfolio KPIs + driver sample |
+| GET | `/api/customers` | Scored customer list (row index IDs) |
+| GET | `/api/customers/{id}/analysis` | Full Action Center analysis |
+| POST | `/api/customers/{id}/what-if` | Model simulation |
+| GET | `/api/customers/{id}/recommendation` | Deterministic recommendations |
+| GET | `/api/customers/{id}/action-center` | Structured Action Center payload |
+| GET | `/api/model-metrics` | Production XGBoost baseline test metrics |
+| POST | `/api/assistant` | Grounded portfolio / customer AI assistant |
+
+### Frontend routes
+
+`/`, `/customers`, `/customers/:customerIndex`, `/new-customer`, `/model-performance`, `/assistant`, plus Risk / Retention / Simulator / Reports.
+
+### Analyze New Customer
+
+`POST /api/analyze-new-customer` scores an ad-hoc customer with `models/churn_model.joblib` (SHAP, root cause, recommendations, optional LLM). The customer is **not** written to the dataset.
+
+`POST /api/what-if` runs What-If on feature JSON (for new customers). Dataset rows still use `/api/customers/{id}/what-if`.
+
+### Local demo only
+
+Phase 5 is a **local hackathon demo**. No public hosting is required.
+
+```
+Frontend  http://localhost:5173
+Backend   http://localhost:8000
+```
+
+Optional frontend env (`frontend/.env`):
+
+```bash
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+If unset, Vite’s `/api` proxy still forwards to port 8000.
+
+### Environment
+
+Copy `.env.example` to `.env` as needed:
+
+- Backend: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173`
+- Frontend: `VITE_API_BASE_URL=http://localhost:8000` only (no LLM secrets)
+
+### API smoke test
+
+```bash
+PYTHONPATH=. python -m api.test_api
+```
+
+Production model remains `models/churn_model.joblib`. Do not run `src.models.train` unless you intentionally intend to overwrite it.

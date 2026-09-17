@@ -1,0 +1,165 @@
+{
+  "created_at_utc": "2026-09-17T06:18:52.797947+00:00",
+  "random_seed": 42,
+  "model_name": "hist_gradient_boosting_engineered",
+  "model_type": "HistGradientBoostingClassifier",
+  "hyperparameters": {
+    "model__l2_regularization": 0.14656553886225335,
+    "model__learning_rate": 0.0464286534970369,
+    "model__max_depth": 3,
+    "model__max_iter": 143,
+    "model__min_samples_leaf": 40
+  },
+  "selected_threshold": 0.5,
+  "use_engineered_features": true,
+  "feature_list": [
+    "SeniorCitizen",
+    "tenure",
+    "MonthlyCharges",
+    "TotalCharges",
+    "gender",
+    "Partner",
+    "Dependents",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod"
+  ],
+  "cv_metrics": {
+    "accuracy": 0.7564090213364685,
+    "precision": 0.5258982836688288,
+    "recall": 0.8087542087542087,
+    "f1": 0.6371936383146457,
+    "roc_auc": 0.8491804971433196,
+    "roc_auc_std": 0.0168764997813866,
+    "overfit_risk": "low",
+    "train_roc_auc": 0.8715045231627174,
+    "roc_auc_gap": 0.02232402601939787
+  },
+  "train_metrics_after_final_fit": {
+    "accuracy": 0.7672720797720798,
+    "precision": 0.5388646288209606,
+    "recall": 0.8309764309764309,
+    "f1": 0.6537748344370861,
+    "roc_auc": 0.8715045231627174
+  },
+  "final_test_metrics": {
+    "n_samples": 1405,
+    "n_churn_cases": 372,
+    "n_non_churn_cases": 1033,
+    "accuracy": 0.7451957295373666,
+    "precision": 0.5123239436619719,
+    "recall": 0.782258064516129,
+    "f1": 0.6191489361702127,
+    "roc_auc": 0.842326869229408,
+    "confusion_matrix": {
+      "labels": [
+        "non-churn (0)",
+        "churn (1)"
+      ],
+      "matrix": [
+        [
+          756,
+          277
+        ],
+        [
+          81,
+          291
+        ]
+      ],
+      "true_negative": 756,
+      "false_positive": 277,
+      "false_negative": 81,
+      "true_positive": 291
+    }
+  },
+  "baseline_test_metrics": {
+    "accuracy": 0.7572953736654804,
+    "precision": 0.5287569573283859,
+    "recall": 0.7661290322580645,
+    "f1": 0.6256860592755215,
+    "roc_auc": 0.8402229126981648,
+    "confusion_matrix": {
+      "tn": 779,
+      "fp": 254,
+      "fn": 87,
+      "tp": 285
+    }
+  },
+  "production_model_replaced": false,
+  "optimized_model_path": "/Users/kakumanuharshithsubrahmanyam/Desktop/Forge/retensa/models/churn_model_optimized.joblib",
+  "baseline_model_path": "/Users/kakumanuharshithsubrahmanyam/Desktop/Forge/retensa/models/churn_model_baseline.joblib",
+  "threshold_grid": [
+    {
+      "threshold": 0.3,
+      "accuracy": 0.6568732193732194,
+      "precision": 0.43010752688172044,
+      "recall": 0.9158249158249159,
+      "f1": 0.5853238648590489
+    },
+    {
+      "threshold": 0.35,
+      "accuracy": 0.686965811965812,
+      "precision": 0.4537131230925738,
+      "recall": 0.901010101010101,
+      "f1": 0.6035182679296346
+    },
+    {
+      "threshold": 0.4,
+      "accuracy": 0.7124287749287749,
+      "precision": 0.4759970457902511,
+      "recall": 0.868013468013468,
+      "f1": 0.6148342475554496
+    },
+    {
+      "threshold": 0.45,
+      "accuracy": 0.7362891737891738,
+      "precision": 0.5008,
+      "recall": 0.8430976430976431,
+      "f1": 0.6283563362609786
+    },
+    {
+      "threshold": 0.5,
+      "accuracy": 0.7564102564102564,
+      "precision": 0.5256017505470459,
+      "recall": 0.8087542087542088,
+      "f1": 0.6371352785145888
+    },
+    {
+      "threshold": 0.55,
+      "accuracy": 0.7690527065527065,
+      "precision": 0.5458984375,
+      "recall": 0.7528619528619529,
+      "f1": 0.632889895273139
+    },
+    {
+      "threshold": 0.6,
+      "accuracy": 0.7877492877492878,
+      "precision": 0.5821648906337633,
+      "recall": 0.6989898989898989,
+      "f1": 0.6352509179926561
+    },
+    {
+      "threshold": 0.65,
+      "accuracy": 0.8000356125356125,
+      "precision": 0.6179921773142112,
+      "recall": 0.6383838383838384,
+      "f1": 0.6280225240145744
+    },
+    {
+      "threshold": 0.7,
+      "accuracy": 0.8044871794871795,
+      "precision": 0.6517647058823529,
+      "recall": 0.5595959595959596,
+      "f1": 0.6021739130434782
+    }
+  ]
+}
