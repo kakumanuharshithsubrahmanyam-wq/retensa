@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+xgboost
+shap
+imbalanced-learn
+matplotlib
+seaborn
+joblib
+fastapi
+uvicorn
+python-dotenv
+pydantic
