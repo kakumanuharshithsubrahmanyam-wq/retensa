@@ -58,4 +58,4 @@ Predict → Explain → Find Root Cause → Simulate → Recommend → Act
 
 ## Team Development
 
-This is a collaborative GitHub project. Team members should work on feature branches and open Pull Requests for review before merging into the main branch.
+This is a collaborative GitHub project. 
